@@ -8,6 +8,7 @@
     <Review v-if="showComponentD" />
     <Chefs v-if="showComponentE" />
     <Gallery v-if="showComponentF" />
+    <Form v-if="showComponentG" />
     <!-- Uncomment the components you want to render -->
     <!-- <ComponentB v-if="showComponentB" />
     <ComponentC v-if="showComponentC" /> -->
@@ -25,6 +26,7 @@ import MainMenu from './MainMenu.vue';
 import Review from './Review.vue'
 import Chefs from './Chefs.vue';
 import Gallery from './Gallery.vue';
+import Form from './Form.vue'
 // Import other components as needed
 
 const showComponentA = true; // Set to true to display Slider
@@ -33,6 +35,7 @@ const showComponentC = true;
 const showComponentD = true;
 const showComponentE = true;
 const showComponentF = true;
+const showComponentG = true;
 // const showComponentD = true; // Set to true to display ComponentC
 // Add more variables as needed for conditional rendering
 </script>
