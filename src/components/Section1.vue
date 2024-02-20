@@ -17,7 +17,7 @@
                 </div>
                 <div class="green">
                    <img :src="greenstar" alt="rating-star" />
-                    </div>
+                </div>
                 
             </div>
             <div class="card">
@@ -26,8 +26,8 @@
                     <h3>Warm Lentlis with Wilted Chard, Roasted <br> Beefs and Goat Cheese</h3>
                     <p>P210</p>
                 </div>
-                <div class="green">
-                   <img :src="greenstar" alt="rating-star" />
+                    <div class="green">
+                    <img :src="greenstar" alt="rating-star" />
                     </div>
             </div>
             <div class="card">
@@ -70,21 +70,20 @@ export default {
     align-items: center;
 }
 .diamond{
-    background: #D89756;
+    background: #000000;
     width: 187px;
     height: 192px;
     transform: rotate(45deg) skew(-3deg);
     top: 80%;
-    left: 57%;
     z-index: 1;
-    border-radius: 100%;
     position: absolute;
+    border: 1px solid greenyellow;
 }
 .text{
     display: flex;
     flex-direction: column;
     top: 85%;
-    left: 1470px;
+    left: 47%;
     justify-content: center;
     align-items: center;
     z-index: 2;
@@ -127,7 +126,7 @@ h2{
     display: flex;
     color: white;
     width: 85%;
-    max-width: 100vh 
+    max-width: 100vh;
 }
 .green{
     width: 50%;

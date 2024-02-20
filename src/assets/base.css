@@ -61,6 +61,6 @@
 
 body {
   min-height: 100vh;
-  background-color: black;
-
+  background-image: url('images/Desktop 4.png'); /* Replace 'path/to/your/image.jpg' with the path to your image */
+  background-size: cover;
 }

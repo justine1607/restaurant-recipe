@@ -28,7 +28,7 @@
             <div class="card">
                 <img :src="location" alt="loaction-pic" />
                 <div class="text">
-                  <h3>123,Hero St.</h3>
+                  <h3>123,HeroSt.</h3>
                 </div>
             </div>
             <div class="card">
@@ -99,7 +99,7 @@ export default {
   align-items: center;
 }
 .form{
-  background: #191919;
+  background: #000000;
   margin-top: 2%;
   max-width: 100vh;
   width: 45%;
@@ -113,6 +113,9 @@ form{
   width: 850px;
   height: 517px;
   max-width: 100vh;
+}
+img{
+  margin-bottom: 25%;
 }
 div{
   display: flex;
@@ -159,7 +162,7 @@ button{
 }
 .h1{
   color:white;
-  margin-top:-70%;
+  margin-top:-55%;
   margin-left: 15%;
   text-transform: capitalize;
   font-size: 48px;
