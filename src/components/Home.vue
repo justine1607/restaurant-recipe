@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Navbar />
     <Hero />
     <Section1 />
     <Slider v-if="showComponentA" />
@@ -18,6 +19,7 @@
 </template>
 
 <script setup>
+import Navbar from "@/components/Navbar.vue";
 import Hero from './Hero.vue'
 import OurStoryVue from './OurStory.vue';
 import Section1 from './Section1.vue'

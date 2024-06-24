@@ -1,19 +1,23 @@
 <template>
-  <div class="hero">
-    <!-- Use the imported image -->
-    <img :src="heroImage" alt="Heropic" />
-  </div>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Menu</a></li>
-    <li><a href="#">Recipe</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Contact Us</a></li>
-  </ul>
-  <div class="border">
-    <h1>Healthy <br> Living</h1>
-  </div>
-  <button class="btn" type="submit">Book a Table </button>
+<div class="block-hero">
+    <div class="container">
+      <div class="hero-container">
+        <div class="hero-grid">
+<!--          <div class="hero-img">-->
+            <img :src="heroImage" alt="Heropic" class="hero-image" />
+<!--          </div>-->
+            <div class="text-container">
+                <div class="header">Healthy</div>
+                <div class="header"> Living</div>
+                <div class="hero-btn">
+                  <button class="btn" type="submit">Book a Table </button></div>
+              </div>
+
+
+<!--        </div>-->
+      </div></div>
+    </div>
+</div>
 </template>
 
 <script>
@@ -30,73 +34,59 @@ export default {
 }
 </script>
 
-<style scoped>
-.hero {
-  /* Set the height to 100vh to occupy the full viewport height */
-  height: 100vh;
-}
+<style>
+.block-hero {
+  margin: 0 auto;
+  max-width: 3000px;
+  .container {
+    max-width: 3000px;
+    .hero-container {
+      //margin-top: 2%;
+      .hero-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 51px;
 
-.hero img {
-  /* Ensure the image fills the entire container */
-  width: 100%;
-  max-width: 100%;
-  height: 100%;
-  object-fit: cover; /* Preserve aspect ratio while covering the viewport */
-}
+        .hero-image {
+          grid-column: 1 / span 6;
+          width: 100%;
+          grid-row: 1;
+          background-size: cover;
+        }
+        .text-container {
+          grid-column: 4 / 2;
+          grid-row: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          line-height: 2;
+          .header {
+            color: white;
+            font-size: 70px;
+            font-family: "LXGW WenKai Mono TC", monospace;
+            font-weight: 800;
+          }
+          .hero-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-/* Other styles as needed */
-ul {
-    display: flex;
-    justify-content: start;
-    margin-top: -45%;
-    margin-left: 24%;
-    color: white;
-    list-style-type: none;
-}
-li{
-    list-style-type: none;
-    padding: 1%;
-    color:white;
-    text-decoration: none;
-}
-a {
-  list-style-type: none;
-  text-decoration: none;
-  color: #ebf1f1;
-}
-
-.border {
-    border: 5px solid white;
-    z-index: 1;
-    width: 22%;
-    height: 68%;
-    display: flex;
-    justify-content: center;
-    margin: 2% 0 0 16%;
-    position: absolute;
-}
-h1{
-    color: white;
-    line-height: 1.5;
-    font-size: 96px;
-    font-family: MONOSPACE;
-    top: 40%;
-    margin-top: 45%;
-
-}
-
-.btn {
-    color: aliceblue;
-    font-size: 16px;
-    font-family: 'Arial Blacl';
-    background-color: #D89756;
-    border-radius: 8px;
-    width: 150px;
-    height: 41px;
-    border: none;
-    top: 72%;
-    left: 34%;
-    margin: 29% 0 0 23%;
-
+            .btn {
+              color: aliceblue;
+              font-size: 16px;
+              font-family: 'Arial Black';
+              background-color: #D89756;
+              border-radius: 8px;
+              width: 150px;
+              height: 41px;
+              border: none;
+              margin: 20px 0 0 0%;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 </style>

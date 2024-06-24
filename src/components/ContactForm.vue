@@ -1,61 +1,59 @@
 <template>
+  <div class="form-block">
   <div class="container">
+    <div class="form-grid">
+      <h2 class="description-trans">Online Reservation</h2>
     <div class="form">
-        <h1>Online Reservation</h1>
         <form @submit.prevent="onlineReservation">
-          <div>
-            <input type="text" id="name" v-model="reservation.name" placeholder="Name" required>
+          <div class="input-trans">
+            <input class="field-name" type="text" id="name" v-model="reservation.name" placeholder="Name" required>
             <input type="email" id="email" v-model="reservation.email" placeholder="Email" required>
           </div>
-          <div class="second">
+          <div class="second input-trans">
             <input type="number" id="person" v-model="reservation.person" placeholder="Number of Persons" required>
             <input type="date" id="date" v-model="reservation.date" required>
             <input type="time" id="time" v-model="reservation.time" required>
           </div>
-          <div>
+          <div class="input-trans">
             <textarea id="message" v-model="reservation.message" placeholder="Message"></textarea>
           </div>
-          
-          <button type="submit">Book a Table</button>
+          <div class="input-trans">
+            <button class="contact-button input-trans" type="submit">Book a Table</button>
+          </div>
+
         </form>
         <div v-if="showMessage" class="message">
           Reservation submitted successfully!
         </div>
     </div>
-      <div class="contact">
-          <h1 class="h1">contact us</h1>
-          <div class="images">
-            <div class="card">
-                <img :src="location" alt="loaction-pic" />
-                <div class="text">
-                  <h3>123,HeroSt.</h3>
-                </div>
-            </div>
-            <div class="card">
-                <img :src="email" alt="email-pic" />
-                <div class="text">
-                  <h3>info@gmail.com</h3>
-                </div>
-            </div>
-            <div class="card">
-                <img :src="call" alt="phone-pic" />
-                <div class="text">
-                  <h3>+3695451066</h3>
-              </div>
-            </div>
-          </div>
         </div>
-  </div>
+  </div></div>
 </template>
 
 <script>
 import location from '@/assets/images/location.png'
 import email from '@/assets/images/email.png'
 import call from '@/assets/images/phone.png'
-import { ref } from 'vue';
+import {onMounted, ref} from 'vue';
 
 export default {
   setup() {
+    onMounted(() =>{
+      const elements = document.querySelectorAll('.input-trans , .description-trans');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+          } else {
+            entry.target.classList.remove('animate');
+          }
+        });
+      },);
+
+      elements.forEach((element)  => {
+        observer.observe(element);
+      });
+    });
     const reservation = ref({
       name: '',
       email:'',
@@ -94,11 +92,20 @@ export default {
 
 <style scoped>
 .container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
+  max-width: 1320px;
+  width: 100%;
+  margin-top: 90px;
+}
+.form-grid{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 51px;
+  max-width: 1390px;
+  margin-inline: auto;
 }
 .form{
+  grid-column: 2/ span 4;
   background: #000000;
   margin-top: 2%;
   max-width: 100vh;
@@ -116,22 +123,44 @@ form{
 }
 img{
   margin-bottom: 25%;
+  max-width: 50px;
 }
 div{
   display: flex;
-  
-  
 }
-h1{
-  color:white;
-  margin-top:2%;
-  margin-left: 15%;
-  text-transform: capitalize;
+h2{
+  grid-column: 3 / span 3;
+  font-family: 'Cormorant Upright', serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 48px;
-  width: 100%;
-  max-width: 100vh;
-}
+  color: white;
 
+  text-transform: capitalize;
+}
+.description-trans{
+  flex: 1 0 calc(33.33% - 20px);
+  opacity: 0;
+  transform: translateX(-10%);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.description-trans.animate{
+  opacity: 1;
+  transform: translateX(0);
+}
+.input-trans {
+  padding: 1%;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1 0 calc(33.33% - 20px);
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+.input-trans.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
 h3{
   color: white;
 }
@@ -148,44 +177,24 @@ textarea,button{
   max-width: 100vh;
   width: 100%;
 }
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=date],
+input[type=time]{
+  font-family: "LXGW WenKai Mono TC", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
 button{
   background: #D89756;
   border-radius: 8px;
   border: none;
 }
-.contact{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: -10%;
-}
-.h1{
-  color:white;
-  margin-top:-55%;
-  margin-left: 15%;
-  text-transform: capitalize;
-  font-size: 48px;
-  width: 100%;
-  max-width: 100vh;
-}
-.images{
-  display: flex;
-  flex-direction: column;
-  max-width: 100vh;
-  width: 20%;
-  margin-bottom: 2%;
-  margin-top: 10%;
-}
-.card{
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 5%;
-  margin-top: 25%;
-}
-.text{
-  max-width: 100vh;
-  width: 20%;
+.contact-button{
+  font-family: "LXGW WenKai Mono TC", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
 .message {
   background-color: #d4edda;
