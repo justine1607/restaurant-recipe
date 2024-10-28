@@ -1,64 +1,161 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-// import HelloWorld from './components/HelloWorld.vue'
-import Home from './components/Home.vue'
+<template>
+    <div class="scroll-watcher"></div>
+    <header :class="{ sticky: isSticky, head: burgerMenu }">
+      <div class="theme-container">
+        <div class="nav-grid">
+          <nav :class="{ show: isShow }">
+            <ul v-if="navigation && navigation.main && navigation.main.items" :key="navigation.id">
+              <router-link v-for="link in navigation.main.items" :key="link.subject.to" :to="link.subject.to">
+                <div class="headline" :class="{ sticky: isSticky }" v-if="link.name === 'page'">
+                  {{ link.label }}
+                </div>
+                <div class="headline hover-headline" :class="{ sticky: isSticky }" v-else-if="link.name === 'submenu'">
+                  {{link.label}}
+                  <ul class="sub-menu">
+                    <li>
+                      <router-link v-for="child in link.children" :key="child.id" :to="child.subject.to" >
+                        {{ child.label }}
+                      </router-link>
+                    </li>
+                  </ul>
+                </div>
+              </router-link>
+            </ul>
+          </nav>
+          <div class="menu-x-icon" >
+            <span :class="{ menuX : exMenu }">
+              <img :class="{ menuX : exMenu }" class="menu-x" :src="menuX" @click="menuBarX" alt="menu icon" />
+            </span>
+
+          </div>
+          <div class="menu-btn">
+              <span :class="{ menu : burgerMenu }">
+                <img class="menu-icon" :src="menu" @click="menuBar" alt="menu icon" />
+              </span>
+          </div>
+          <div class="toggle-light" :class="{ 'is-visible': burgerMenu}">
+            <p class="apperance theme-h3">apperance </p>
+            <ul class="lightmode" :class="{ 'is-ul-visible': burgerMenu}">
+              <li class="mode">
+                <a href="#" v-if="!mode" @click="toggleMode">
+                  <img class="brightness" :src="night" alt="light mode icon">
+                </a>
+                <a href="#" v-else @click="toggleMode">
+                  <img class="moon" :src="light" alt="dark mode icon">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </header>
+   <router-view></router-view>
+  </template>
+
+
+<script>
+import { ref, onMounted, onUnmounted } from 'vue';
+import light from "@/assets/images/lightmode/2.png"
+import night from "@/assets/images/lightmode/3.png"
+import menu from '@/assets/images/menu.png'
+import menuX from '@/assets/images/menuX.png'
+import ParentComponent from "@/components/BlockManager.vue";
+import Footer from "@/components/Footer.vue";
+export default {
+  components: {ParentComponent, Footer},
+  setup() {
+    const navigation = ref({},[])
+    const isSticky = ref(false);
+    const home = ref([]);
+    const isShow = ref(false)
+    const burgerMenu = ref(false)
+    const exMenu = ref(false)
+    const mode = ref(false)
+
+    const headerScroll = () => {
+      if (!burgerMenu.value) {
+        isSticky.value = window.scrollY > 0;
+      }
+      const isStickyValue = window.scrollY > 0;
+      isSticky.value = isStickyValue;
+    };
+
+    onMounted(() => {
+      window.addEventListener('scroll', headerScroll)
+
+      fetch('http://localhost:3000/navigation')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            navigation.value = data.navigation;
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('scroll', headerScroll);
+    });
+    const toggleMenu = () => {
+      const head = document.querySelector('header');
+      if (burgerMenu.value) {
+        head.classList.add('head');
+      } else {
+        head.classList.remove('head');
+      }
+      const navbar = document.querySelector('.nav-grid nav');
+      const exit = document.querySelector('.menu-x-icon .menu-x');
+
+      // head.classList.add('head');
+      navbar.classList.add('navi');
+      exit.classList.add('exmenu');
+      burgerMenu.value = !burgerMenu.value;
+    };
+    const menuBar = () => {
+      toggleMenu();
+    }
+
+    const menuBarX = () =>{
+      toggleMenu();
+      exMenu.value = !exMenu.value;
+      const navbar = document.querySelector('.nav-grid nav');
+      navbar.classList.remove('navi');
+
+      const sticky = document.querySelector('header');
+      sticky.classList.remove('sticky');
+    }
+    const toggleMode = () => {
+      mode.value = !mode.value;
+      document.body.classList.toggle("lightmode", mode.value);
+    };
+    return {
+      navigation,
+      isSticky,
+      home,
+      menu,
+      menuX,
+      menuBar,
+      menuBarX,
+      burgerMenu,
+      exMenu,
+      isShow,
+      mode,
+      toggleMode,
+      light,
+      night
+    };
+  }
+};
 </script>
 
-<template>
-     
-    
-      <!-- <HelloWorld /> -->
-      <Home />
-      <!-- this router render the components indide the views file -->
-      <!-- <router-view /> -->
-      
-
-  
-</template>
-
-<style>
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video, button,input {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {display: block; }
-
-input, select, textarea {margin: 0;padding: 0;border: 0;font: inherit;}
-
-body {
-  background: black;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding-top: 60px;
-}
-
-ol, ul {list-style: none;}
-
-blockquote, q {quotes: none;}
-
-blockquote:before, blockquote:after,
-button {background:none;}
-q:before, q:after {content: '';content: none;}
-
-table {border-collapse: collapse;border-spacing: 0;}
-img {height:auto;width:auto;}
-//input {-webkit-appearance: none;-moz-appearance: none;appearance: none;border-radius:0;}
-
-* {box-sizing:border-box;
-  &:focus {outline:none;}
-}
-
+<style lang="scss">
+@import "assets/styles/theme/theme";
+@import "assets/styles/core/reset";
 </style>

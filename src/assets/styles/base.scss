@@ -1,3 +1,9 @@
+@import 'core/index';
+@import 'theme/index';
+@import 'blocks/index';
+html{
+  font-size: 10px;
+}
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --vt-c-white: #ffffff;
@@ -60,5 +66,9 @@
 }
 
 body {
-padding-top: 60px;
+  padding-top: 60px;
+  background: #171717;
+  font-size: 18px;
+  line-height: 1.5em;
+  font-weight: 700;
 }

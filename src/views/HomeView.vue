@@ -1,11 +1,14 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+<script >
+import ParentComponent from "@/components/BlockManager.vue";
+// import Footer from "@/components/Footer.vue";
+export default {
+  components: {ParentComponent}
+}
 </script>
 
 <template>
   <main>
-    <!-- this render in the browser becuase it was imported in 
-    the main.js that is the  -->
-    <TheWelcome />
+    <ParentComponent/>
+
   </main>
 </template>
