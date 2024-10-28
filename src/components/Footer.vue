@@ -103,4 +103,6 @@ export default {
 };
 </script>
 <style lang="scss">
+@import "../assets/styles/theme/theme";
+@import "../assets/styles/core/reset";
 </style>

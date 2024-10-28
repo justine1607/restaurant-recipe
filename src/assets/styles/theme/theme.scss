@@ -123,9 +123,6 @@ header {
           margin-left: 30px;padding: 0 30px;
           transition: 0.3s;transition-property: color, background;
           border-radius: 20px;
-          //&:hover {
-          //  color: coral;border: 1px solid #28a745;border-radius: 20px;
-          //}
           .sticky {
             color: #171717;
             font-weight: 400;
@@ -183,7 +180,7 @@ header {
 }
 
 .footer-block {
-  background-image: url("src/assets/images/wave.svg");
+  background-image: url("@/assets/images/wave.svg");
   object-fit: cover;
   background-repeat: no-repeat;
   background-size: cover;
