@@ -3,7 +3,7 @@
     <div class="theme-container">
       <div class="error-text-container">
         <h3 class="theme-h3"> 404 not found</h3>
-        <img :src=error alt="error-image">
+        <img :src="`/assets/images/error/1.png`" alt="error-image">
         <span>
           <p class="theme-h3">go back to <a href="/">hompage</a></p>
         </span>
@@ -14,12 +14,12 @@
 
 </template>
 <script >
-import error from"@/assets/images/error/1.png"
+
 
 export default {
   setup(){
     return{
-      error
+
     }
   }
 }

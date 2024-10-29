@@ -6,13 +6,13 @@
                   <div class="theme-h2">follow Us</div>
                   <div class="icons">
                       <a target='_blank' rel='nonereffer' href='https://secure.skype.com/portal/profile/'>
-                        <img :src="skype" alt="phone-pic" />
+                        <img :src="`/assets/images/skype.png`" alt="phone-pic" />
                       </a>
                       <a target='_blank' rel='nonereffer' href='https://secure.skype.com/portal/profile/'>
-                        <img :src="facebook" alt="phone-pic" />
+                        <img :src="`/assets/images/facebook.png`" alt="phone-pic" />
                       </a>
                       <a target='_blank' rel='nonereffer' href='https://secure.skype.com/portal/profile/'>
-                        <img :src="instagram" alt="phone-pic" />
+                        <img :src="`/assets/images/instagram.png`" alt="phone-pic" />
                       </a>
                   </div>
               </div>
@@ -79,25 +79,25 @@
   </div>
 </template>
 <script>
-import account from '@/assets/images/account.png'
-import location from '@/assets/images/location.png'
-import email from '@/assets/images/email.png'
-import call from '@/assets/images/phone.png'
-import skype from '@/assets/images/skype.png'
-import facebook from '@/assets/images/facebook.png'
-import instagram from '@/assets/images/instagram.png'
+// import account from 'public/assets/images/account.png'
+// import location from 'public/assets/images/location.png'
+// import email from 'public/assets/images/email.png'
+// import call from 'public/assets/images/phone.png'
+// import skype from 'public/assets/images/skype.png'
+// import facebook from 'public/assets/images/facebook.png'
+// import instagram from 'public/assets/images/instagram.png'
 
 export default {
     setup() {
 
         return {
-          account,
-          location,
-          email,
-          call,
-          skype,
-          facebook,
-          instagram
+          // account,
+          // location,
+          // email,
+          // call,
+          // skype,
+          // facebook,
+          // instagram
         };
     },
 };

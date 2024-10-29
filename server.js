@@ -14,7 +14,7 @@ const port = 3000;
 
 app.use(cors());
 // Middleware to serve JSON files
-app.use('/data', express.static(path.join(__dirname, 'src/data')));
+app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 app.get('/navigation', async (req, res) => {
     try {
         const navigationPath = path.join(__dirname, 'src/data/navigation.json');

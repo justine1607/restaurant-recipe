@@ -6,19 +6,19 @@
       "items": [
         {
           "id": "17",
-          "image": "src/assets/images/chef1.png",
+          "image": "/assets/images/chef1.png",
           "name": "Miyoko Schinner",
           "label": "Head Chief"
         },
         {
           "id": "18",
-          "image": "src/assets/images/chef2.png",
+          "image": "/assets/images/chef2.png",
           "name": "Miyoko Schinner",
           "label": "Head Chief"
         },
         {
           "id": "19",
-          "image": "src/assets/images/chef3.png",
+          "image": "/assets/images/chef3.png",
           "name": "Miyoko Schinner",
           "label": "Head Chief"
         }

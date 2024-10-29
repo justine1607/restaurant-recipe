@@ -12,10 +12,10 @@
     </div>
 </template>
 <script>
-import appetite from '@/assets/images/menus-images/1.png'
-import maindishes from '@/assets/images/menus-images/4.png'
-import desserts from '@/assets/images/menus-images/2.png'
-import drink from '@/assets/images/menus-images/3.png'
+// import appetite from '@/assets/images/menus-images/1.png'
+// import maindishes from '@/assets/images/menus-images/4.png'
+// import desserts from '@/assets/images/menus-images/2.png'
+// import drink from '@/assets/images/menus-images/3.png'
 import {onMounted, ref} from "vue";
 export default {
   setup(){
@@ -37,10 +37,10 @@ export default {
     });
     return{
       menus,
-      appetite,
-      maindishes,
-      desserts,
-      drink
+      // appetite,
+      // maindishes,
+      // desserts,
+      // drink
     }
   }
 }

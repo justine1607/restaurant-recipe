@@ -24,13 +24,13 @@
           </nav>
           <div class="menu-x-icon" >
             <span :class="{ menuX : exMenu }">
-              <img :class="{ menuX : exMenu }" class="menu-x" :src="menuX" @click="menuBarX" alt="menu icon" />
+              <img :class="{ menuX : exMenu }" class="menu-x" :src="`/assets/images/menuX.png`" @click="menuBarX" alt="menu icon" />
             </span>
 
           </div>
           <div class="menu-btn">
               <span :class="{ menu : burgerMenu }">
-                <img class="menu-icon" :src="menu" @click="menuBar" alt="menu icon" />
+                <img class="menu-icon" :src="`/assets/images/menu.png`" @click="menuBar" alt="menu icon" />
               </span>
           </div>
           <div class="toggle-light" :class="{ 'is-visible': burgerMenu}">
@@ -38,10 +38,10 @@
             <ul class="lightmode" :class="{ 'is-ul-visible': burgerMenu}">
               <li class="mode">
                 <a href="#" v-if="!mode" @click="toggleMode">
-                  <img class="brightness" :src="night" alt="light mode icon">
+                  <img class="brightness" :src="`/assets/images/lightmode/3.png`" alt="light mode icon">
                 </a>
                 <a href="#" v-else @click="toggleMode">
-                  <img class="moon" :src="light" alt="dark mode icon">
+                  <img class="moon" :src="`/assets/images/lightmode/2.png`" alt="dark mode icon">
                 </a>
               </li>
             </ul>
@@ -57,10 +57,6 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue';
-import light from "@/assets/images/lightmode/2.png"
-import night from "@/assets/images/lightmode/3.png"
-import menu from '@/assets/images/menu.png'
-import menuX from '@/assets/images/menuX.png'
 import ParentComponent from "@/components/BlockManager.vue";
 import Footer from "@/components/Footer.vue";
 export default {
@@ -139,8 +135,6 @@ export default {
       navigation,
       isSticky,
       home,
-      menu,
-      menuX,
       menuBar,
       menuBarX,
       burgerMenu,
@@ -148,8 +142,6 @@ export default {
       isShow,
       mode,
       toggleMode,
-      light,
-      night
     };
   }
 };
