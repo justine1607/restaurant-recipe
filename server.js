@@ -12,7 +12,11 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const port = 3000;
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://vercel-restaurantrecipe-project.vercel.app', // Your Vercel URL
+    methods: ['GET', 'POST'], // Include only necessary methods
+    credentials: true // Enable if using cookies or authentication
+}));
 // Middleware to serve JSON files
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 app.get('/navigation', async (req, res) => {
