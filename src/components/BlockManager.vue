@@ -174,7 +174,6 @@ export default {
             return response.json();
           })
           .then(data => {
-            console.log(data);
             form.value = data.data.form;
           })
           .catch(error => {
