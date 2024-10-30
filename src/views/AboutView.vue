@@ -19,12 +19,4 @@
 @import "../assets/styles/blocks/aboutview";
 </style>
 <script >
-
-
-export default {
-  setup(){
-    return{
-    }
-  }
-}
 </script>

@@ -281,8 +281,6 @@ header {
     }
 
     .cta {
-      border: 1px solid #00ff00;
-
       @include screenMaxWidth(768px) {
         margin: 2rem 0;
       }
@@ -338,11 +336,12 @@ header {
       }
       .toggle-light{
         display: none;
-        gap: 2rem; border: 1px solid green;
-        border-radius: 99px;
-        padding: 0.2rem 0.5rem;
         &.is-visible{
           display: inline-flex;align-items: center;
+          gap: 2rem;
+          border: 1px solid green;
+          border-radius: 99px;
+          padding: 0.2rem 0.5rem;
         }
         p{
           display: block;
@@ -370,7 +369,23 @@ header {
     }
   }
 }
+@media screen and (max-width: 768px) {
+  header{
+    width: unset;
+  }
+}
+@media  screen and (max-width: 375px) {
+  .footer-block {
+    .grid {
+      display: flex;
+    }
 
+    .soc-med {
+      grid-column: unset;
+      grid-row: unset;
+    }
+  }
+}
 @media screen and (max-width: 1460px) {
   .footer-block{
     .container {

@@ -57,10 +57,10 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue';
-import ParentComponent from "@/components/BlockManager.vue";
-import Footer from "@/components/Footer.vue";
+// import ParentComponent from "@/components/BlockManager.vue";
+// import Footer from "@/components/Footer.vue";
 export default {
-  components: {ParentComponent, Footer},
+  components: {},
   setup() {
     const navigation = ref({},[])
     const isSticky = ref(false);
@@ -81,7 +81,7 @@ export default {
     onMounted(() => {
       window.addEventListener('scroll', headerScroll)
 
-      fetch('http://localhost:3000/navigation')
+      fetch('https://restaurant-recipe-1.onrender.com/navigation')
           .then(response => {
             if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);
@@ -89,7 +89,7 @@ export default {
             return response.json();
           })
           .then(data => {
-            navigation.value = data.navigation;
+            navigation.value = data;
           })
           .catch(error => {
             console.error('Error fetching data:', error);
@@ -109,7 +109,6 @@ export default {
       const navbar = document.querySelector('.nav-grid nav');
       const exit = document.querySelector('.menu-x-icon .menu-x');
 
-      // head.classList.add('head');
       navbar.classList.add('navi');
       exit.classList.add('exmenu');
       burgerMenu.value = !burgerMenu.value;

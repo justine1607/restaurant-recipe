@@ -10,20 +10,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = 3000;
-
+const allowedOrigins = ['http://localhost:5173', 'https://my-restaurantrecipe.vercel.app','https://restaurant-recipe-1.onrender.com'];
 app.use(cors({
-    origin: 'http://localhost:5173',
-    methods: ['GET', 'POST'],
-    credentials: true
+    origin: allowedOrigins,
 }));
 // Middleware to serve JSON files
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 app.get('/navigation', async (req, res) => {
     try {
-        const navigationPath = path.join(__dirname, 'src/data/navigation.json');
-        const navigation = await fs.readFile(navigationPath, 'utf-8');
-        res.json(JSON.parse(navigation));
+        const navigationDataPath = path.join(__dirname, 'src/data/navigation.json');
+        const navigationData = await fs.readFile(navigationDataPath, 'utf-8');
+        res.json(JSON.parse(navigationData));
     } catch (error) {
         console.error('Error reading file:', error);
         res.status(500).send('Error reading data');
@@ -147,6 +144,7 @@ app.get('/menus', async (req, res) => {
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
+/* eslint-env node */
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));

@@ -1,5 +1,5 @@
 <template>
-    <Header v-if="hero" :key="hero.id" :heroData="hero"/>
+    <AppHeader v-if="hero" :key="hero.id" :heroData="hero"/>
     <Section1 v-if="specialties" :key="specialties.id" :specialtiesData="specialties"/>
     <Slider v-if="slider" :key="slider.id" :sliderData="slider"/>
     <OurStory v-if="story" :key="story.id" :storyData="story"/>
@@ -15,7 +15,7 @@
 
 <script>
 import { onMounted, ref } from "vue";
-import Header from "@/components/AppHeader.vue";
+import AppHeader from "@/components/AppHeader.vue";
 import Section1 from "@/components/Section1.vue";
 import Slider from "@/components/Slider.vue";
 import OurStory from "@/components/OurStory.vue";
@@ -35,7 +35,7 @@ export default {
       return gallery
     }
   },
-  components: {Header, Section1,Slider,OurStory,MainMenu,Review,Chefs,Gallery,Form,Footer},
+  components: {AppHeader, Section1,Slider,OurStory,MainMenu,Review,Chefs,Gallery,Form,Footer},
   setup() {
     const hero = ref({});
     const specialties = ref({},[]);
@@ -72,7 +72,7 @@ export default {
             return response.json();
           })
           .then(data => {
-            specialties.value = data.data.specialties;
+            specialties.value = data.specialties;
           })
           .catch(error => {
             console.error('Error fetching data:', error);
@@ -174,6 +174,7 @@ export default {
             return response.json();
           })
           .then(data => {
+            console.log(data);
             form.value = data.data.form;
           })
           .catch(error => {

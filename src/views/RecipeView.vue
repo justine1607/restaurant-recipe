@@ -38,10 +38,7 @@
 <style lang="scss">
 @import "src/assets/styles/blocks/recipe";
 </style>
-<script>
-// import Modal from "@/components/Modal.vue";
-import {onMounted, ref} from "vue";
-// import Form from "@/components/Form.vue";
+<script>import {onMounted, ref} from "vue";
 export default {
   components: {},
   props: {
@@ -53,7 +50,7 @@ export default {
   setup() {
     const recipe = ref({}, []);
     onMounted(() => {
-      fetch('http://localhost:3000/recipe')
+      fetch('https://restaurant-recipe-1.onrender.com/recipe')
           .then(response => response.json())
           .then(data => {
             recipe.value = data;
@@ -66,49 +63,4 @@ export default {
     }
   }
 }
-
-// import Hero from "@/components/AppHeader.vue";
-// import {onMounted, ref} from "vue";
-// import Footer from "@/components/Footer.vue";
-//
-// export default {
-//   components: {Hero, Footer, Modal},
-//   setup() {
-//     const home = ref([])
-//     const header = ref({
-//       title: 'Reserve Table',
-//       text: 'Please fill the form below to enable us serve you better!'
-//     });
-//     const firstname = ref('')
-//     const lastname = ref('')
-//     const email = ref('')
-//     const phone = ref('')
-//
-//     const showModal = ref(false)
-//     const toggleModal = () => {
-//       console.log('modal button clicked')
-//       showModal.value = !showModal.value
-//     }
-//     const openModal = () => {
-//       console.log('modal wrkinf')
-//       showModal.value = !showModal.value
-//     }
-//     onMounted(() =>{
-//
-//       fetch("http://localhost:3000/home")
-//           .then( res => res.json())
-//           .then (data => home.value = data)
-//           .catch( err => console.log(err.message))
-//
-//     })
-//     return {
-//       home,
-//       showModal,
-//       header,
-//       toggleModal,
-//       openModal,
-//       firstname, lastname, email, phone,
-//     };
-//   }
-// }
 </script>
