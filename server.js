@@ -13,7 +13,10 @@ const app = express();
 const port = 3000;
 
 app.use(cors({
-    origin: 'https://vercel-restaurantrecipe-project.vercel.app', // Your Vercel URL
+    origin: [
+        'https://vercel-restaurantrecipe-project.vercel.app', // Your Vercel URL
+        'http://localhost:5173' // Allow local development URL
+    ],
     methods: ['GET', 'POST'], // Include only necessary methods
     credentials: true // Enable if using cookies or authentication
 }));
@@ -151,7 +154,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
-

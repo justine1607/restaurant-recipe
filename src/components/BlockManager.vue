@@ -49,7 +49,7 @@ export default {
 
 
     onMounted(() => {
-      fetch('http://localhost:3000/header')
+      fetch('https://restaurant-recipe-1.onrender.com/header')
           .then(response => {
             if (!response.ok) {
               throw new Error('Network response was not ok');
@@ -64,7 +64,7 @@ export default {
           });
 
 
-      fetch('http://localhost:3000/specialties')
+      fetch('https://restaurant-recipe-1.onrender.com/specialties')
           .then(response => {
             if (!response.ok) {
               throw new Error('Network response was not ok');
@@ -79,7 +79,7 @@ export default {
           });
 
 
-      fetch('http://localhost:3000/slider')
+      fetch('https://restaurant-recipe-1.onrender.com/slider')
           .then(response => {
             if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);
@@ -94,7 +94,7 @@ export default {
           });
 
 
-      fetch('http://localhost:3000/our_story')
+      fetch('https://restaurant-recipe-1.onrender.com/our_story')
           .then(response => {
             if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);
@@ -109,7 +109,7 @@ export default {
           });
 
 
-      fetch('http://localhost:3000/main_menu')
+      fetch('https://restaurant-recipe-1.onrender.com/main_menu')
           .then(response => {
             if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);
@@ -123,7 +123,7 @@ export default {
             console.error('Error fetching data:', error);
           });
 
-      fetch('http://localhost:3000/review')
+      fetch('https://restaurant-recipe-1.onrender.com/review')
           .then(response => {
             if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);
@@ -137,7 +137,7 @@ export default {
             console.error('Error fetching data:', error);
           });
 
-      fetch('http://localhost:3000/chefs')
+      fetch('https://restaurant-recipe-1.onrender.com/chefs')
           .then(response => {
             if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);
@@ -152,7 +152,7 @@ export default {
           });
 
 
-      fetch('http://localhost:3000/gallery')
+      fetch('https://restaurant-recipe-1.onrender.com/gallery')
           .then(response => {
             if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);
@@ -166,7 +166,7 @@ export default {
             console.error('Error fetching data:', error);
           });
 
-      fetch('http://localhost:3000/form')
+      fetch('https://restaurant-recipe-1.onrender.com/form')
           .then(response => {
             if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);
