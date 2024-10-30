@@ -1,11 +1,11 @@
 import express from 'express';
 import path from 'path';
-import fs from 'fs/promises'; // Use promises version of fs for better async support
+import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
 
 
-// Convert __dirname to work with ES modules
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -13,12 +13,9 @@ const app = express();
 const port = 3000;
 
 app.use(cors({
-    origin: [
-        'https://vercel-restaurantrecipe-project.vercel.app', // Your Vercel URL
-        'http://localhost:5173' // Allow local development URL
-    ],
-    methods: ['GET', 'POST'], // Include only necessary methods
-    credentials: true // Enable if using cookies or authentication
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST'],
+    credentials: true
 }));
 // Middleware to serve JSON files
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
@@ -147,10 +144,10 @@ app.get('/menus', async (req, res) => {
 });
 
 
-// Define more routes as needed
+
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// Serve index.html for other routes
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
