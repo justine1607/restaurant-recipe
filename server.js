@@ -10,9 +10,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const allowedOrigins = ['http://localhost:5173', 'https://my-restaurantrecipe.vercel.app','https://restaurant-recipe-1.onrender.com'];
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://my-restaurantrecipe.vercel.app',
+    'https://restaurant-recipe-project.vercel.app', // Add your frontend URL
+    'https://restaurant-recipe-1.onrender.com'
+];
+
 app.use(cors({
     origin: allowedOrigins,
+    methods: ['GET', 'POST'], // Specify allowed methods
+    allowedHeaders: ['Content-Type'], // Specify allowed headers
 }));
 // Middleware to serve JSON files
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));

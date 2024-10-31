@@ -372,6 +372,20 @@ header {
 @media screen and (max-width: 768px) {
   header{
     width: unset;
+    .nav-grid{
+      nav{
+        .hover-headline{
+          .sub-menu{
+            position: unset;
+            display: none;
+          }
+          &:hover ul{
+            display: none;
+            opacity: 0;
+          }
+        }
+      }
+    }
   }
 }
 @media  screen and (max-width: 375px) {
@@ -379,7 +393,6 @@ header {
     .grid {
       display: flex;
     }
-
     .soc-med {
       grid-column: unset;
       grid-row: unset;
