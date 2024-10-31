@@ -4,22 +4,24 @@
       <div class="theme-container">
         <div class="nav-grid">
           <nav :class="{ show: isShow }">
-            <ul v-if="navigation && navigation.main && navigation.main.items" :key="navigation.id">
-              <router-link v-for="link in navigation.main.items" :key="link.subject.to" :to="link.subject.to">
-                <div class="headline" :class="{ sticky: isSticky }" v-if="link.name === 'page'">
-                  {{ link.label }}
-                </div>
-                <div class="headline hover-headline" :class="{ sticky: isSticky }" v-else-if="link.name === 'submenu'">
-                  {{link.label}}
-                  <ul class="sub-menu">
-                    <li>
-                      <router-link v-for="child in link.children" :key="child.id" :to="child.subject.to" >
-                        {{ child.label }}
-                      </router-link>
-                    </li>
-                  </ul>
-                </div>
-              </router-link>
+            <ul v-if="main && main.items" :key="main.id">
+              <li v-for="link in main.items" :key="link.id">
+                <router-link :to="link.subject.to">
+                  <div class="headline" :class="{ sticky: isSticky }" v-if="link.name === 'page'">
+                    {{ link.label }}
+                  </div>
+                  <div class="headline hover-headline" :class="{ sticky: isSticky }" v-else-if="link.name === 'submenu'">
+                    {{ link.label }}
+                    <ul class="sub-menu">
+                      <li v-for="child in link.children" :key="child.id">
+                        <router-link :to="child.subject.to">
+                          {{ child.label }}
+                        </router-link>
+                      </li>
+                    </ul>
+                  </div>
+                </router-link>
+              </li>
             </ul>
           </nav>
           <div class="menu-x-icon" >
@@ -47,22 +49,16 @@
             </ul>
           </div>
         </div>
-
       </div>
-
     </header>
    <router-view></router-view>
   </template>
-
-
 <script>
 import { ref, onMounted, onUnmounted } from 'vue';
-// import ParentComponent from "@/components/BlockManager.vue";
-// import Footer from "@/components/Footer.vue";
 export default {
   components: {},
   setup() {
-    const navigation = ref({},[])
+    const main = ref({})
     const isSticky = ref(false);
     const home = ref([]);
     const isShow = ref(false)
@@ -77,7 +73,6 @@ export default {
       const isStickyValue = window.scrollY > 0;
       isSticky.value = isStickyValue;
     };
-
     onMounted(() => {
       window.addEventListener('scroll', headerScroll)
 
@@ -89,7 +84,8 @@ export default {
             return response.json();
           })
           .then(data => {
-            navigation.value = data;
+            console.log(data);
+            main.value = data.navigation.main;
           })
           .catch(error => {
             console.error('Error fetching data:', error);
@@ -131,7 +127,7 @@ export default {
       document.body.classList.toggle("lightmode", mode.value);
     };
     return {
-      navigation,
+      main,
       isSticky,
       home,
       menuBar,

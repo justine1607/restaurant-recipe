@@ -57,6 +57,7 @@ export default {
             return response.json();
           })
           .then(data => {
+            console.log('fetched data', data)
             hero.value = data.data.hero;
           })
           .catch(error => {
@@ -174,7 +175,7 @@ export default {
             return response.json();
           })
           .then(data => {
-            console.log(data);
+            // console.log(data);
             form.value = data.data.form;
           })
           .catch(error => {
